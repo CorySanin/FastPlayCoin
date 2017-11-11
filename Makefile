@@ -11,7 +11,7 @@ endif
 
 # CONFIGURATION #
 
-NAME := PlayCoin
+NAME := Fast PlayCoin
 
 BUILD_DIR := build
 OUTPUT_DIR := out
@@ -29,13 +29,13 @@ BUILD_FLAGS_CXX :=
 RUN_FLAGS :=
 
 VERSION_MAJOR := 1
-VERSION_MINOR := 1
+VERSION_MINOR := 0
 VERSION_MICRO := 0
 
 ifeq ($(TARGET),$(filter $(TARGET),3DS WIIU))
     TITLE := $(NAME)
-    DESCRIPTION := The CIA Version
-    AUTHOR := games195 & MrCheeze
+    DESCRIPTION := 300 coins NOW
+    AUTHOR := games195, MrCheeze, WORM
 endif
 
 ifeq ($(TARGET),3DS)
@@ -43,7 +43,7 @@ ifeq ($(TARGET),3DS)
     LIBRARIES += ctru
 
     PRODUCT_CODE := CTR-P-PlayCoin
-    UNIQUE_ID := 0x00195
+    UNIQUE_ID := 0x00F98
 
     CATEGORY := Application
     USE_ON_SD := true

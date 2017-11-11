@@ -143,7 +143,7 @@ int menu_sd2gamecoindat()
 }
 
 int setcoins(u8 highByte, u8 lowByte)
-{	
+{
 	Result ret=0;
 
 	printf("Reading gamecoin.dat...\n");
@@ -211,7 +211,8 @@ int main()
 
 	consoleInit(GFX_BOTTOM, NULL);
 
-	printf("Play Coin Setter CIA v.1.0\n");
+	printf("Fast Play Coin Setter CIA v.1.0\n");
+	printf("For Katie\n");
 	gfxFlushBuffers();
 	gfxSwapBuffers();
 
@@ -240,14 +241,15 @@ int main()
 			gfxFlushBuffers();
 			gfxSwapBuffers();
 
-			consoleClear();
-			handle_menus();
+			//consoleClear();
+			//handle_menus();
+			menu_300coins();
 		}
 	}
 
 	if(ret<0)
 	{
-		printf("Press the START button to exit.\n");
+		printf("For Katie\n");
 		// Main loop
 		while (aptMainLoop())
 		{
@@ -257,7 +259,6 @@ int main()
 			u32 kDown = hidKeysDown();
 			if (kDown & KEY_START)
 				break; // break in order to return to hbmenu
-
 			// Flush and swap framebuffers
 			gfxFlushBuffers();
 			gfxSwapBuffers();
@@ -271,4 +272,3 @@ int main()
 	gfxExit();
 	return 0;
 }
-

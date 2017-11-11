@@ -242,4 +242,3 @@ Result archive_copyfile(Archive inarchive, Archive outarchive, char *inpath, cha
 
 	return ret;
 }
-
