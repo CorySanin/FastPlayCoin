@@ -11,7 +11,8 @@ before_install:
   - export DEVKITARM=${DEVKITPRO}/devkitARM
 
 install:
-  
+  - sudo pacman -Sy
+  - sudo pacman -S 3ds-dev
 
 script:
   - make
