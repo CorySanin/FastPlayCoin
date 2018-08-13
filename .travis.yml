@@ -11,9 +11,10 @@ before_install:
 install:
   - sudo dkp-pacman -Sy
   - sudo dkp-pacman -S 3ds-dev --noconfirm
-  - source /etc/profile.d/devkit-env.sh
-  - echo $DEVKITPRO
   - git clone https://github.com/Steveice10/buildtools
+
+before_script:
+  - source /etc/profile.d/devkit-env.sh
 
 script:
   - make

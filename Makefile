@@ -1,6 +1,6 @@
 # TARGET #
 
-TARGET := ALL
+TARGET := 3DS
 LIBRARY := 0
 
 ifeq ($(TARGET),$(filter $(TARGET),3DS WIIU))
