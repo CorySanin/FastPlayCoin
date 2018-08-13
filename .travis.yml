@@ -7,12 +7,12 @@ group: stable
 before_install:
   - wget https://github.com/devkitPro/pacman/releases/download/devkitpro-pacman-1.0.1/devkitpro-pacman.deb
   - sudo dpkg -i devkitpro-pacman.deb
-  - export DEVKITPRO=/home/travis/devkitPro
-  - export DEVKITARM=${DEVKITPRO}/devkitARM
 
 install:
   - sudo dkp-pacman -Sy
   - sudo dkp-pacman -S 3ds-dev --noconfirm
+  - export DEVKITPRO=/opt/devkitpro
+  - export DEVKITARM=${DEVKITPRO}/devkitARM
   - git clone https://github.com/Steveice10/buildtools
 
 script:
