@@ -6,6 +6,9 @@ group: stable
 
 before_install:
   - wget https://github.com/devkitPro/pacman/releases/download/devkitpro-pacman-1.0.1/devkitpro-pacman.deb
+  - wget $(curl -s https://api.github.com/repos/Steveice10/bannertool/releases | grep browser_download_url | grep '.zip' | head -n 1 | cut -d '"' -f 4) -O bannertool.zip
+  - unzip bannertool.zip -d ./bannertool/
+  - echo I want bt/linux-$(arch)/bannertool
   - sudo dpkg -i devkitpro-pacman.deb
 
 install:
