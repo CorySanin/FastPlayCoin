@@ -12,7 +12,7 @@ before_install:
 
 install:
   - sudo dkp-pacman -Sy
-  - sudo dkp-pacman -S 3ds-dev
+  - sudo dkp-pacman -S 3ds-dev --noconfirm
 
 script:
   - make
