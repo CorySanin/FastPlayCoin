@@ -19,6 +19,7 @@ install:
   - sudo dkp-pacman -Sy
   - sudo dkp-pacman -S 3ds-dev --noconfirm
   - export PATH=$(pwd)/working:$PATH
+  - sudo apt-get install libstdc++6
   - git clone https://github.com/Steveice10/buildtools
 
 before_script:
