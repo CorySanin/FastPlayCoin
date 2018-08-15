@@ -4,6 +4,11 @@ os: linux
 dist: trusty
 group: stable
 
+addons:
+  apt:
+    packages:
+      - libstdc++6
+
 before_install:
   - wget https://github.com/devkitPro/pacman/releases/download/devkitpro-pacman-1.0.1/devkitpro-pacman.deb
   - wget $(curl -s https://api.github.com/repos/Steveice10/bannertool/releases | grep browser_download_url | grep '.zip' | head -n 1 | cut -d '"' -f 4) -O bannertool.zip
@@ -19,7 +24,6 @@ install:
   - sudo dkp-pacman -Sy
   - sudo dkp-pacman -S 3ds-dev --noconfirm
   - export PATH=$(pwd)/working:$PATH
-  - sudo apt-get install libstdc++6
   - git clone https://github.com/Steveice10/buildtools
 
 before_script:
