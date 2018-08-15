@@ -11,6 +11,7 @@ addons:
       - gcc-4.8
 
 before_install:
+  - strings /usr/lib/x86_64-linux-gnu/libstdc++.so.6 | grep GLIBC
   - wget https://github.com/devkitPro/pacman/releases/download/devkitpro-pacman-1.0.1/devkitpro-pacman.deb
   - wget $(curl -s https://api.github.com/repos/Steveice10/bannertool/releases | grep browser_download_url | grep '.zip' | head -n 1 | cut -d '"' -f 4) -O bannertool.zip
   - unzip bannertool.zip -d ./bannertool/
@@ -30,7 +31,6 @@ install:
   - echo "Embed newer libstdc++ for distros that don't come with it (ubuntu 14.04)";
   - mkdir -p appdir/usr/optional/ ; mkdir -p appdir/usr/optional/libstdc++/ ;
   - cp /usr/lib/x86_64-linux-gnu/libstdc++.so.6 ./appdir/usr/optional/libstdc++/ ;
-  - rm ./appdir/AppRun ;
   - wget -c https://github.com/darealshinji/AppImageKit-checkrt/releases/download/continuous/AppRun-patched-x86_64 -O ./appdir/AppRun ;
   - chmod a+x ./appdir/AppRun ;
   - wget -c https://github.com/darealshinji/AppImageKit-checkrt/releases/download/continuous/exec-x86_64.so -O ./appdir/usr/optional/exec.so ;
