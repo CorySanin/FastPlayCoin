@@ -8,7 +8,7 @@ addons:
   apt:
     packages:
       - libstdc++6
-      - gcc-5.2
+      - gcc-4.9-base
 
 before_install:
   - strings /usr/lib/x86_64-linux-gnu/libstdc++.so.6 | grep GLIBC
