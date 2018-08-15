@@ -8,7 +8,7 @@ addons:
   apt:
     packages:
       - libstdc++6
-      - gcc-4.8
+      - gcc-5.0
 
 before_install:
   - strings /usr/lib/x86_64-linux-gnu/libstdc++.so.6 | grep GLIBC
@@ -27,13 +27,6 @@ install:
   - sudo dkp-pacman -S 3ds-dev --noconfirm
   - export PATH=$(pwd)/working:$PATH
   - git clone https://github.com/Steveice10/buildtools
-  -
-  - echo "Embed newer libstdc++ for distros that don't come with it (ubuntu 14.04)";
-  - mkdir -p appdir/usr/optional/ ; mkdir -p appdir/usr/optional/libstdc++/ ;
-  - cp /usr/lib/x86_64-linux-gnu/libstdc++.so.6 ./appdir/usr/optional/libstdc++/ ;
-  - wget -c https://github.com/darealshinji/AppImageKit-checkrt/releases/download/continuous/AppRun-patched-x86_64 -O ./appdir/AppRun ;
-  - chmod a+x ./appdir/AppRun ;
-  - wget -c https://github.com/darealshinji/AppImageKit-checkrt/releases/download/continuous/exec-x86_64.so -O ./appdir/usr/optional/exec.so ;
 
 before_script:
   - source /etc/profile.d/devkit-env.sh
