@@ -1,0 +1,32 @@
+name: Build
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    container: devkitpro/devkitarm
+
+    steps:
+    - name: Install packages
+      run: sudo apt-get update && sudo apt-get install --no-install-recommends -y jq gcc && sudo dkp-pacman -Sy && sudo dkp-pacman -S 3ds-dev --noconfirm
+    
+    - name: Download bannertool
+      run: wget $(curl -s https://api.github.com/repos/Steveice10/bannertool/releases | jq -r .[0].assets[0].browser_download_url) -O bannertool.zip && unzip bannertool.zip -d ./bannertool/ && mkdir working && cp ./bannertool/linux-$(arch)/bannertool ./working/
+    
+    - name: Download Project_CTR
+      run: wget $(curl -s https://api.github.com/repos/3DSGuy/Project_CTR/releases | grep 'browser_download_url' | grep '.zip' | grep 'ctrtool' | grep 'ubuntu' | head -n 1 | cut -d '"' -f 4) -O Project_CTR.zip && unzip Project_CTR.zip -d ./projectctr/ && cp ./projectctr/Linux_$(arch)/makerom ./working/
+
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    
+    - name: Clone buildtools
+      run: git clone https://github.com/Steveice10/buildtools
+    
+    - name: Build
+      run: export PATH=$(pwd)/working:$PATH && source /etc/profile.d/devkit-env.sh && make
