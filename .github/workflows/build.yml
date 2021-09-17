@@ -10,7 +10,6 @@ jobs:
 
   build:
     runs-on: ubuntu-latest
-    env:
 
     permissions:
       contents: read
