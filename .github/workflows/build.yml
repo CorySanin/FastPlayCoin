@@ -14,7 +14,7 @@ jobs:
 
     steps:
     - name: Install packages
-      run: sudo apt-get install --no-install-recommends -y jq gcc && sudo dkp-pacman -Sy && sudo dkp-pacman -S 3ds-dev --noconfirm
+      run: sudo apt-get update && sudo apt-get install --no-install-recommends -y jq gcc && sudo dkp-pacman -Sy && sudo dkp-pacman -S 3ds-dev --noconfirm
     
     - name: Download bannertool
       run: wget $(curl -s https://api.github.com/repos/Steveice10/bannertool/releases | jq -r .[0].assets[0].browser_download_url) -O bannertool.zip && unzip bannertool.zip -d ./bannertool/ && mkdir working && cp ./bannertool/linux-$(arch)/bannertool ./working/
